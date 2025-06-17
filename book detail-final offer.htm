@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Final Offer - READSCAPE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="books.css" />
+  <style>
+    body { padding-top: 80px; }
+    .book-detail-container { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px; }
+    .book-cover img { max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .review-form {
+      background-color: #fdf4e3;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar (same as in your existing page, copy-paste if needed) -->
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">BookStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about us.htm">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="ebooks.htm">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Audio.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Textbooks.htm">Text Books</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+         <!-- Wishlist Icon -->
+       <!-- <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>-->
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="cart.htm" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img id="navProfilePic" src="https://via.placeholder.com/40" alt="Profile" class="nav-profile-img"
+              onerror="this.src='profile-image.webp';" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+   <!-- Dark mode toggle icon -->
+   <button id="darkModeToggle" aria-label="Toggle Dark Mode" onclick="toggleDarkMode()">
+    <span id="darkModeIcon">🌞</span>
+  </button>
+
+<!-- Main Book Info -->
+<div class="container book-detail-container">
+  <div class="book-cover">
+    <img src="Final Offer.jpeg" alt="Final Offer Cover" />
+  </div>
+  <div class="book-info">
+    <h2>Final Offer</h2>
+    <p><strong>Author:</strong> Lauren Asher</p>
+    <p><strong>Pages:</strong> 592</p>
+    <p><strong>Price:</strong> ₹699</p>
+    <p><strong>Summary:</strong> An emotional and steamy second-chance romance from the Dreamland Billionaires series.</p>
+    <div class="mb-3">
+      <label for="quantity" class="form-label"><strong>Quantity:</strong></label>
+      <input type="number" id="quantity" class="form-control w-25" min="1" value="1" />
+    </div>
+    <button class="btn btn-warning mt-2" onclick="addToCart()">Add to Cart 🛒</button>
+  </div>
+</div>
+
+<!-- Review Section -->
+<div class="container review-section">
+  <h4>⭐ Reviews</h4>
+  <div id="reviewList"></div>
+</div>
+
+<!-- Review Submission -->
+<div class="container review-form">
+  <h5>Add Your Review</h5>
+  <form onsubmit="submitReview(event)">
+    <div class="mb-2">
+      <label for="reviewerName" class="form-label">Your Name</label>
+      <input type="text" id="reviewerName" class="form-control" required />
+    </div>
+    <div class="mb-2">
+      <label for="reviewText" class="form-label">Your Review</label>
+      <textarea id="reviewText" class="form-control" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="reviewRating" class="form-label">Rating</label>
+      <select id="reviewRating" class="form-select w-25" required>
+        <option value="5">5 ★★★★★</option>
+        <option value="4">4 ★★★★☆</option>
+        <option value="3">3 ★★★☆☆</option>
+        <option value="2">2 ★★☆☆☆</option>
+        <option value="1">1 ★☆☆☆☆</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit Review</button>
+  </form>
+</div>
+
+<!-- Extra Book Info -->
+<div class="container extra-details mt-4">
+  <h4>📘 Book Details</h4>
+  <ul>
+    <li><strong>Publisher:</strong> Bloom Books</li>
+    <li><strong>Language:</strong> English</li>
+    <li><strong>Genre:</strong> Contemporary Romance, Billionaire Romance, Second-Chance Love</li>
+    <li><strong>ISBN:</strong> 978-0349433455</li>
+  </ul>
+</div>
+
+<!-- Scripts -->
+<script>
+  function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem("finaloffer_reviews")) || [];
+    const reviewList = document.getElementById("reviewList");
+    reviewList.innerHTML = "";
+    reviews.forEach((review, index) => {
+      reviewList.innerHTML += `
+        <div class="border p-3 rounded mb-2">
+          <strong>${review.name}</strong> <span class="badge bg-warning text-dark">${review.rating}★</span>
+          <p>${review.text}</p>
+          ${review.fromUser ? `<button class="btn btn-sm btn-outline-danger" onclick="deleteReview(${index})">🗑 Delete</button>` : ""}
+        </div>`;
+    });
+  }
+
+  function submitReview(e) {
+    e.preventDefault();
+    const name = document.getElementById("reviewerName").value;
+    const text = document.getElementById("reviewText").value;
+    const rating = document.getElementById("reviewRating").value;
+
+    const newReview = { name, text, rating, fromUser: true };
+    const reviews = JSON.parse(localStorage.getItem("finaloffer_reviews")) || [];
+    reviews.push(newReview);
+    localStorage.setItem("finaloffer_reviews", JSON.stringify(reviews));
+
+    e.target.reset();
+    loadReviews();
+  }
+
+  function deleteReview(index) {
+    const reviews = JSON.parse(localStorage.getItem("finaloffer_reviews")) || [];
+    reviews.splice(index, 1);
+    localStorage.setItem("finaloffer_reviews", JSON.stringify(reviews));
+    loadReviews();
+  }
+
+  function addToCart() {
+    const quantity = parseInt(document.getElementById("quantity").value);
+    if (isNaN(quantity) || quantity <= 0) {
+      alert("Please enter a valid quantity.");
+      return;
+    }
+
+    const item = {
+      id: "final-offer",
+      title: "Final Offer",
+      price: 699,
+      quantity: quantity,
+      image: "Final Offer.jpeg",
+      author: "Lauren Asher"
+    };
+
+    let cart = JSON.parse(localStorage.getItem("readscape_cart")) || [];
+    const index = cart.findIndex(i => i.id === item.id);
+    if (index !== -1) cart[index].quantity += item.quantity;
+    else cart.push(item);
+
+    localStorage.setItem("readscape_cart", JSON.stringify(cart));
+    alert("Book added to cart!");
+    window.location.href = "cart.htm";
+  }
+
+  window.onload = function () {
+    const existing = JSON.parse(localStorage.getItem("finaloffer_reviews"));
+    if (!existing || existing.length === 0) {
+      const defaults = [
+        { name: "Tia", text: "A heart-melting finale to the series.", rating: "5" },
+        { name: "Rohan", text: "Love redemption stories? This is a must-read.", rating: "4" }
+      ];
+      localStorage.setItem("finaloffer_reviews", JSON.stringify(defaults));
+    }
+    loadReviews();
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

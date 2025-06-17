@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Author - READSCAPE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap & Font Awesome -->
+   
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="books.css" />
+</head>
+<body>
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">ReadEscape</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about us.htm">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="ebooks.htm">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Audio.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Textbooks.htm">Text Books</a></li>
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      </ul>
+  
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+       
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img
+  id="navProfilePic"
+  src="https://via.placeholder.com/40"
+  alt="Profile"
+  class="nav-profile-img"
+  onerror="this.src='profile-image.webp';"
+  />
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+<!-- Author Section: John Green -->
+<div class="container py-5 mt-5">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center mb-4">
+        <img src="john green.jpeg" alt="John Green" class="img-fluid shadow rounded" width="250" />
+        <h2 class="mt-3">John Green</h2>
+        <p class="text-muted">🇺🇸 American · 📖 Young Adult · 🎭 Coming-of-Age</p>
+      </div>
+      <div class="col-md-8">
+        <h4 class="text-brown">About the Author</h4>
+        <p>
+          John Green is an award-winning YA author best known for his deeply emotional and philosophical novels. From "The Fault in Our Stars" to "Looking for Alaska," his books blend love, loss, and meaning with unforgettable teen voices.
+        </p>
+        <blockquote class="blockquote mt-4 border-start ps-3 text-brown">
+          "Some infinities are bigger than other infinities."
+        </blockquote>
+      </div>
+    </div>
+    <hr class="my-5" />
+  </div>
+  
+
+
+  <h4 class="text-center mb-4">💌 Books by John Green</h4>
+
+  <div id="greenCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center gap-4">
+          <div class="text-center">
+            <a href="book-detail the fault in our stars.htm">
+              <img src="the fault in our stars.jpeg" alt="The Fault in Our Stars" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">The Fault in Our Stars</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="looking for alaska.jpeg" alt="Looking for Alaska" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Looking for Alaska</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="paper towns.jpeg" alt="Paper Towns" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Paper Towns</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center gap-4">
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="an abundance of katheriens.jpeg" alt="An Abundance of Katherines" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">An Abundance of Katherines</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="turtles all the.jpeg" alt="Turtles All the Way Down" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Turtles All the Way Down</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="will grayson.jpeg" alt="Will Grayson, Will Grayson" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Will Grayson, Will Grayson</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#greenCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#greenCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Back to Home -->
+  <div class="text-center mt-5">
+    <a href="Booknew.htm" class="btn btn-warning">← Back to Home</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center bg-brown text-white py-3 mt-5">
+  <p class="mb-0">All rights reserved by READSCAPE © 2025</p>
+</footer>
+
+
+  
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>  

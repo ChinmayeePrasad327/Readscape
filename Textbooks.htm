@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>READSCAPE - Textbooks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="books.css" />
+  <style>
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .book-section {
+      margin-bottom: 40px;
+    }
+    .book-section h3 {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .book-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .book-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">ReadEscape</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about us.htm">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="ebooks.htm">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Audio.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Textbooks.htm">Text Books</a></li>
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      </ul>
+
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+          <!-- Wishlist Icon -->
+       <!-- <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>-->
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="cart.htm" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img
+  id="navProfilePic"
+  src="https://via.placeholder.com/40"
+  alt="Profile"
+  class="nav-profile-img"
+  onerror="this.src='profile-image.webp';"
+/>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode" onclick="toggleDarkMode()">
+    <span id="darkModeIcon">🌞</span>
+  </button>
+  <div class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-md-3">
+        <h5 class="mb-3">Filter By</h5>
+        <label>Category</label>
+        <select id="filterCategory" class="form-select mb-3">
+          <option value="">All Categories</option>
+          <option value="Competitive">Competitive</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Engineering">Engineering</option>
+          <option value="School Textbooks">School Textbooks</option>
+          <option value="Medical">Medical</option>
+        </select>
+        <label>Author</label>
+        <select id="filterAuthor" class="form-select mb-3">
+          <option value="">All Authors</option>
+          <option value="James Stewart">James Stewart</option>
+          <option value="David Halliday">David Halliday</option>
+          <option value="NCERT">NCERT</option>
+          <option value="R.K. Rajput">R.K. Rajput</option>
+        </select>
+        <label>Price Range</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" id="minPrice" placeholder="Min" />
+          <input type="number" class="form-control" id="maxPrice" placeholder="Max" />
+        </div>
+        <button class="btn btn-warning w-100" onclick="applyFilters()">Apply Filters</button>
+      </div>
+      <div class="col-md-9">
+        <div id="booksContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const books = [
+      { title: "Calculus I", author: "James Stewart", price: 799, category: "Mathematics", img: "calculus 1 stewart.jpg" },
+      { title: "Algebra Basics", author: "Susan Miller", price: 650, category: "Mathematics", img: "algebra basics.webp" },
+      { title: "Linear Algebra", author: "Gilbert Strang", price: 900, category: "Mathematics", img: "linear algebra.png" },
+      { title: "Physics for Engineers", author: "David Halliday", price: 950, category: "Engineering", img: "physics.png" },
+      { title: "Thermodynamics", author: "Cengel", price: 980, category: "Engineering", img: "thermodynamics.jpg" },
+      { title: "Mechanical Basics", author: "R.K. Rajput", price: 820, category: "Engineering", img: "mechanical.jpg" },
+      { title: "CBSE Science - Class 9", author: "NCERT", price: 299, category: "School Textbooks", img: "cbse sci 9.jpg" },
+      { title: "CBSE Maths - Class 10", author: "NCERT", price: 380, category: "School Textbooks", img: "cbse mat 10.jpg" },
+      { title: "ICSE English - Class 10", author: "Selina", price: 349, category: "School Textbooks", img: "icse eng.jpg" },
+      { title: "UPSC Guide", author: "Dr. Arvind", price: 499, category: "Competitive", img: "upsc.jpg" },
+      { title: "SSC Maths", author: "Nitin Gupta", price: 399, category: "Competitive", img: "ssc.jpg" },
+      { title: "NEET Biology Guide", author: "MTG Experts", price: 880, category: "Medical", img: "neet bio.jpg" },
+      { title: "NEET Chemistry Crash Course", author: "Arihant", price: 730, category: "Medical", img: "neet-chem.jpg" },
+      { title: "NEET Physics Master", author: "DC Pandey", price: 799, category: "Medical", img: "neet-phu.jpg" },
+      { title: "JEE Advanced Maths", author: "Cengage", price: 999, category: "Competitive", img: "math cen.jpg" },
+      { title: "JEE Mains Chemistry", author: "GRB", price: 820, category: "Competitive", img: "cen chem.jpg" },
+      { title: "Engineering Graphics", author: "N.D. Bhatt", price: 850, category: "Engineering", img: "nd bhatt.jpg" },
+      { title: "Math Foundation", author: "RD Sharma", price: 490, category: "Mathematics", img: "maths rd sharma.jpg" },
+      { title: "CBSE Biology - Class 10", author: "NCERT", price: 310, category: "School Textbooks", img: "bio 10.jpg" },
+      { title: "Physics Notes - NEET", author: "Akash Institute", price: 750, category: "Medical", img: "neet phy.jpg" }
+    ];
+
+    function renderBooks(filterFn = null) {
+      const container = document.getElementById("booksContainer");
+      container.innerHTML = "";
+      const filteredBooks = filterFn ? books.filter(filterFn) : books;
+      const grouped = {};
+
+      filteredBooks.forEach(book => {
+        if (!grouped[book.category]) grouped[book.category] = [];
+        grouped[book.category].push(book);
+      });
+
+      for (const category in grouped) {
+        const section = document.createElement("div");
+        section.className = "book-section";
+
+        const title = document.createElement("h3");
+        title.textContent = category;
+        section.appendChild(title);
+
+        const grid = document.createElement("div");
+        grid.className = "book-grid";
+
+        grouped[category].forEach(book => {
+          const card = document.createElement("div");
+          card.className = "book-card";
+          card.innerHTML = `
+            <img src="${book.img}" alt="${book.title}" />
+            <p><strong>${book.title}</strong></p>
+            <p>${book.author}</p>
+            <p>₹${book.price}</p>
+          `;
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        container.appendChild(section);
+      }
+    }
+
+    function applyFilters() {
+      const cat = document.getElementById("filterCategory").value;
+      const auth = document.getElementById("filterAuthor").value;
+      const min = parseInt(document.getElementById("minPrice").value) || 0;
+      const max = parseInt(document.getElementById("maxPrice").value) || Infinity;
+
+      renderBooks(book => {
+        return (!cat || book.category === cat) &&
+               (!auth || book.author === auth) &&
+               book.price >= min && book.price <= max;
+      });
+    }
+
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("darkModeIcon");
+      body.classList.toggle("dark-mode");
+      const isDark = body.classList.contains("dark-mode");
+      localStorage.setItem("darkMode", isDark);
+      icon.textContent = isDark ? "🌙" : "☀️";
+    }
+
+    window.onload = function () {
+      if (localStorage.getItem("darkMode") === "true") document.body.classList.add("dark-mode");
+      renderBooks();
+    }
+  </script>
+</body>
+</html>

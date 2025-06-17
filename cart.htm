@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Cart - READSCAPE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="books.css" />
+  <style>
+    body { padding-top: 80px; background-color: #fff8f0; }
+    .cart-container { max-width: 1000px; margin: auto; margin-top: 40px; }
+    .cart-item { background: #fff; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.08); padding: 20px; margin-bottom: 20px; display: flex; gap: 20px; align-items: center; }
+    .cart-item img { width: 120px; height: auto; border-radius: 8px; }
+    .cart-details { flex-grow: 1; }
+    .cart-details h5 { margin-bottom: 5px; }
+    .cart-total { text-align: right; font-size: 1.2rem; font-weight: bold; margin-top: 20px; }
+    .btn-buy { width: 100%; margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">ReadEscape</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about us.htm">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="ebooks.htm">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Audio.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Textbooks.htm">Text Books</a></li>
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      </ul>
+  
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+        <!-- Wishlist Icon -->
+       <!-- <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>-->
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="cart.htm" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img
+  id="navProfilePic"
+  src="https://via.placeholder.com/40"
+  alt="Profile"
+  class="nav-profile-img"
+  onerror="this.src='profile-image.webp';"
+  />
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+  
+  
+  <!-- Dark mode toggle -->
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode" onclick="toggleDarkMode()">
+  <span id="darkModeIcon">🌞</span>
+  </button>
+<!-- Cart Content -->
+<div class="container cart-container">
+  <h3 class="mb-4">🛒 Your Cart</h3>
+  <div id="cartItems"></div>
+  <div class="cart-total" id="cartTotal"></div>
+  <button class="btn btn-success btn-lg btn-buy" onclick="buyItems()">Buy Now</button>
+</div>
+
+<script>
+  function loadCart() {
+    const cart = JSON.parse(localStorage.getItem("readscape_cart")) || [];
+    const cartItemsContainer = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = `<p class="text-muted">Your cart is empty.</p>`;
+      document.querySelector(".btn-buy").style.display = "none";
+      cartTotal.innerText = "";
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      cartItemsContainer.innerHTML += `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.title} cover">
+          <div class="cart-details">
+            <h5>${item.title}</h5>
+            <p><strong>Author:</strong> ${item.author}</p>
+            <p><strong>Price:</strong> ₹${item.price} × ${item.quantity} = ₹${itemTotal}</p>
+            <button class="btn btn-outline-danger btn-sm" onclick="removeItem(${index})">🗑 Remove</button>
+          </div>
+        </div>
+      `;
+    });
+
+    cartTotal.innerText = `Total: ₹${total}`;
+  }
+
+  function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("readscape_cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("readscape_cart", JSON.stringify(cart));
+    loadCart();
+  }
+
+  function buyItems() {
+    if (confirm("Are you sure you want to buy all items in your cart?")) {
+      localStorage.removeItem("readscape_cart");
+      alert("Thank you for your purchase!");
+      loadCart();
+    }
+  }
+  function toggleDarkMode() {
+    const body = document.body;
+    const icon = document.getElementById("darkModeIcon");
+    body.classList.toggle("dark-mode");
+    const isDark = body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDark);
+    icon.textContent = isDark ? "🌙" : "🌞";
+  }
+
+  window.onload = function () {
+    if (localStorage.getItem("darkMode") === "true") {
+      document.body.classList.add("dark-mode");
+      const icon = document.getElementById("darkModeIcon");
+      if (icon) icon.textContent = "🌞";
+    }
+
+    const user = JSON.parse(localStorage.getItem("readscape_user"));
+    const navPic = document.getElementById("navProfilePic");
+    if (navPic && user?.profilePic) navPic.src = user.profilePic;
+
+    
+  };
+
+  window.onload = loadCart;
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+/* =================== BASE STYLES =================== */
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  background-color: #ffffff;
+  color: #000000;
+  padding-top: 40px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: firebrick;
+  color: white;
+}
+
+header img {
+  margin-right: 20px;
+}
+
+.caption {
+  font-size: 0.9em;
+  color: white;
+  margin-top: -10px;
+}
+
+.bg-brown {
+  background-color: #8B4513;
+}
+
+/* =================== FORMS =================== */
+.form-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  max-width: 400px;
+  width: 90%;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =================== READING SECTION =================== */
+.reading-challenge-section {
+  background-color: #E8ECEF;
+  color: #000;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* =================== SCROLLABLE CARDS =================== */
+.book-card {
+  display: inline-block;
+  width: 180px;
+  margin: 10px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.rating {
+  color: gold;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  z-index: 1;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #333;
+}
+
+.scroll-button.left {
+  left: 0;
+}
+
+.scroll-button.right {
+  right: 0;
+}
+
+/* =================== MEGA MENU =================== */
+.dropdown-menu.mega-menu {
+  width: 600px;
+  padding: 1rem;
+}
+
+.mega-menu .col h6 {
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 992px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
+
+/* =================== DARK MODE =================== */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+  padding-top: 50px;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .dropdown-menu,
+body.dark-mode .form-container,
+body.dark-mode .list-group-item,
+body.dark-mode .scroll-button,
+body.dark-mode .btn-dark {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode .reading-challenge-section {
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+body.dark-mode .reading-challenge-section h2,
+body.dark-mode .reading-challenge-section p,
+body.dark-mode .btn-dark {
+  color: #f1f1f1;
+}
+
+body.dark-mode .btn-outline-warning,
+body.dark-mode .btn-outline-light {
+  border-color: #f1f1f1;
+  color: #f1f1f1;
+}
+
+body.dark-mode .btn-outline-warning:hover {
+  background-color: #ffc107;
+  color: black;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: 1px solid #666;
+}
+
+body.dark-mode label,
+body.dark-mode .form-label {
+  color: #f1f1f1;
+}
+
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode .caption {
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode a {
+  color: #ffcc70;
+}
+
+body.dark-mode .card,
+body.dark-mode .card-title,
+body.dark-mode .card-text,
+body.dark-mode .text-muted {
+  background-color: #1f1f1f;
+  color: #f1f1f1 !important;
+}
+
+/* 🌞/🌙 Toggle Button Styles */
+
+/* Dark mode styling */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #f5f5f5 !important;
+}
+
+.dark-mode .navbar,
+.dark-mode header,
+.dark-mode .book-section,
+.dark-mode .form-container {
+  background-color: #1e1e1e !important;
+  color: #f5f5f5 !important;
+}.dark-mode .book-section {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-mode .navbar,
+.dark-mode header,
+.dark-mode .reading-challenge-section,
+.dark-mode .book-section {
+  background-color: #1e1e1e !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-mode .navbar .nav-link,
+.dark-mode .navbar-brand,
+.dark-mode .main-title,
+.dark-mode .caption {
+  color: #f1f1f1 !important;
+}
+
+.dark-mode .form-control {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: 1px solid #555;
+}
+
+.dark-mode .btn {
+  border-color: #ffa500;
+}
+
+/* Toggle Button Styling */
+#darkModeToggle {
+  position: fixed;
+  top: 60px; /* Slightly lower to avoid header overlap */
+  right: 20px;
+  z-index: 9999;
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#darkModeToggle {
+  animation: floatIn 0.6s ease-out;
+}
+
+@keyframes floatIn {
+  0% {
+    transform: scale(0.5) translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+
+#darkModeToggle:hover {
+  background-color: #ffb300;
+  transform: scale(1.1);
+}
+
+#darkModeIcon {
+  font-size: 20px;
+}
+
+.dark-mode #darkModeIcon {
+  transform: rotate(180deg);
+}
+/* ================= DARK MODE ================== */
+
+
+.dark-mode .navbar,
+.dark-mode header {
+  background-color: #1e1e1e !important;
+}
+
+.dark-mode .nav-link,
+.dark-mode .navbar-brand,
+.dark-mode .main-title,
+.dark-mode .caption {
+  color: #f1f1f1 !important;
+}
+
+.dark-mode .btn {
+  background-color: #333 !important;
+  color: #ffc107 !important;
+  border-color: #ffc107 !important;
+}
+
+.dark-mode .btn:hover {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+}
+
+.dark-mode .form-control {
+  background-color: #2a2a2a;
+  color: #fff;
+  border-color: #555;
+}
+
+.dark-mode .book-section,
+.dark-mode .scrolling-wrapper {
+  background-color: #181818;
+}
+
+
+#heroCarousel {
+  background: linear-gradient(to right, #F4E1C1, #C87941, #8B4513); /* or Option 2 */
+  color: #fff;
+  padding: 40px 0;
+  }
+    
+
+  
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.carousel-caption h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+}
+.carousel-caption h2,
+.carousel-caption p {
+  color: #4a2c1a; /* a darker brown for better readability */
+}
+
+.carousel-caption .btn {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+}
+
+.carousel-caption .btn:hover {
+  background-color: #ffb300;
+}
+/* Wishlist and Cart Icon Styling */
+.wishlist-icon,
+.cart-icon {
+  font-size: 1.5rem; /* Makes the icon bigger */
+  color: #8B4513 !important; /* Mocha / brown tone */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for some ✨sassy spice✨ */
+.wishlist-icon:hover,
+.cart-icon:hover {
+  transform: scale(1.2);
+  color: #d2691e !important; /* Slightly brighter brown on hover */
+}
+
+body.dark-mode .wishlist-icon,
+body.dark-mode .cart-icon {
+  color: #f1e0c5 !important; /* soft beige for visibility in dark */
+}
+.nav-profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  display:   block;
+  transition: all 0.2s ease-in-out;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Makes them visible! */
+  background-size: 100% 100%;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1 !important;
+  width: 5%;
+}
+
+

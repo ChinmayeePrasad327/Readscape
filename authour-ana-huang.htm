@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Author - READSCAPE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap & Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="books.css" />
+</head>
+<body>
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">ReadEscape</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Ebooks</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="AudioBook.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Text.htm">Text Books</a></li>
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      </ul>
+  
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+        <!-- Wishlist Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img
+  id="navProfilePic"
+  src="https://via.placeholder.com/40"
+  alt="Profile"
+  class="nav-profile-img"
+  onerror="this.src='profile-image.webp';"
+  />
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+   <!-- Dark Mode Toggle -->
+   <button id="darkModeToggle" aria-label="Toggle Dark Mode" onclick="toggleDarkMode()">
+    <span id="darkModeIcon">🌞</span>
+  </button>
+
+<!-- Author Section -->
+<div class="container py-5 mt-5">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center mb-4">
+        <img src="ana huang.jpeg" alt="Ana Huang" class="img-fluid shadow rounded" width="250" />
+        <h2 class="mt-3">Ana Huang</h2>
+        <p class="text-muted">🇺🇸 American · 💞 Romance · 💼 Contemporary</p>
+      </div>
+      <div class="col-md-8">
+        <h4 class="text-brown">About the Author</h4>
+        <p>
+          Ana Huang is a New York Times bestselling author of romance novels known for her Twisted series. Her books are emotional, steamy, and full of unforgettable characters.
+        </p>
+        <blockquote class="blockquote mt-4 border-start ps-3 text-brown">
+          "Love isn't always easy. But it's always worth it."
+        </blockquote>
+      </div>
+    </div>
+    <hr class="my-5" />
+    <h4 class="text-center mb-4">📚 Books by Ana Huang</h4>
+
+<div id="bookCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-inner">
+    <!-- First Slide -->
+    <div class="carousel-item active">
+      <div class="d-flex justify-content-center">
+        <div class="text-center mx-2">
+          <a href="book detail-twisted love.htm">
+            <img src="twisted love.jpeg" alt="Twisted Love" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">Twisted Love</p>
+          </a>
+        </div>
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="twised games.jpeg" alt="Twisted Games" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">Twisted Games</p>
+          </a>
+        </div>
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="king of greed.jpeg" alt="Twisted Lies" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">King of Greed</p>
+          </a>
+        </div>
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="king of sloth.jpeg" alt="Twisted Lies" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">King of Sloth</p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Second Slide -->
+    <div class="carousel-item">
+      <div class="d-flex justify-content-center">
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="twisted hate.jpeg" alt="Twisted Hate" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">Twisted Hate</p>
+          </a>
+        </div>
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="twisted lies.jpeg" alt="Twisted Lies" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">Twisted Lies</p>
+          </a>
+        </div>
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="king of wrath.jpeg" alt="Twisted Lies" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">King of Wrath</p>
+          </a>
+        </div>
+        <div class="text-center mx-2">
+          <a href="book-detail.htm">
+            <img src="king of pride.jpeg" alt="Twisted Lies" class="book-cover" style="height: 180px; width: auto;" />
+            <p class="mt-2 mb-0">King of Pride</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#bookCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#bookCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Back to Home -->
+<div class="text-center mt-5">
+    <a href="Booknew.htm" class="btn btn-warning">← Back to Home</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center bg-brown text-white py-3 mt-5">
+  <p class="mb-0">All rights reserved by READSCAPE © 2025</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script>
+  function toggleDarkMode() {
+    const body = document.body;
+    const icon = document.getElementById("darkModeIcon");
+    body.classList.toggle("dark-mode");
+    const isDark = body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDark);
+    icon.textContent = isDark ? "🌙" : "🌞";
+  }
+
+  window.onload = function () {
+    const isDark = localStorage.getItem("darkMode") === "true";
+    const icon = document.getElementById("darkModeIcon");
+    if (isDark) {
+      document.body.classList.add("dark-mode");
+      icon.textContent = "🌞";
+    }
+
+    const user = JSON.parse(localStorage.getItem("readscape_user"));
+    const navPic = document.getElementById("navProfilePic");
+    if (navPic && user?.profilePic) {
+      navPic.src = user.profilePic;
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

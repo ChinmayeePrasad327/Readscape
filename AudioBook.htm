@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile - READSCAPE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="books.css" />
+  <style>
+    body {
+      padding-top: 80px;
+    }
+    .profile-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .profile-box {
+      flex: 1 1 300px;
+      max-width: 350px;
+      padding: 25px;
+      border-radius: 15px;
+      background: #fff8f0;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    }
+    .content-box {
+      flex: 2 1 500px;
+      max-width: 700px;
+      padding: 25px;
+      border-radius: 15px;
+      background: #fdf4e3;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+    .edit-section {
+      display: none;
+    }
+    .dark-mode .profile-box,
+    .dark-mode .content-box {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+    }
+    .dark-mode input,
+    .dark-mode textarea {
+      background-color: #2a2a2a;
+      color: #f1f1f1;
+      border: 1px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">BookStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Ebooks</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="AudioBook.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Text.htm">Text Books</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+        <!-- Wishlist Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>
+
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img id="navProfilePic" src="https://via.placeholder.com/40" alt="Profile" class="nav-profile-img"
+              onerror="this.src='profile-image.webp';" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Audiobook Display -->
+  <div class="book-section">
+    <h3>Fiction</h3>
+    <div class="scrolling-wrapper">
+      <div class="audio-card">
+        <img src="fiction1.jpg" alt="Fiction 1" />
+        <h6>The Silent Patient</h6>
+        <p>Alex Michaelides</p>
+        <p>⏱ 8h 42m | ₹399</p>
+      </div>
+      <div class="audio-card">
+        <img src="fiction2.jpg" alt="Fiction 2" />
+        <h6>It Ends With Us</h6>
+        <p>Colleen Hoover</p>
+        <p>⏱ 7h 30m | ₹349</p>
+      </div>
+    </div>
+
+    <h3 class="mt-4">Self-help</h3>
+    <div class="scrolling-wrapper">
+      <div class="audio-card">
+        <img src="selfhelp1.jpg" alt="Self-help 1" />
+        <h6>Atomic Habits</h6>
+        <p>James Clear</p>
+        <p>⏱ 6h 35m | ₹299</p>
+      </div>
+      <div class="audio-card">
+        <img src="selfhelp2.jpg" alt="Self-help 2" />
+        <h6>The Power of Now</h6>
+        <p>Eckhart Tolle</p>
+        <p>⏱ 7h 18m | ₹349</p>
+      </div>
+    </div>
+
+    <h3 class="mt-4">Educational</h3>
+    <div class="scrolling-wrapper">
+      <div class="audio-card">
+        <img src="edu1.jpg" alt="Edu 1" />
+        <h6>Brief History of Time</h6>
+        <p>Stephen Hawking</p>
+        <p>⏱ 9h 15m | ₹429</p>
+      </div>
+      <div class="audio-card">
+        <img src="edu2.jpg" alt="Edu 2" />
+        <h6>Physics Fundamentals</h6>
+        <p>Walter Lewin</p>
+        <p>⏱ 10h 5m | ₹389</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-brown text-white text-center py-4 mt-5">
+    <p>&copy; 2025 READSCAPE - All rights reserved.</p>
+  </footer>
+  <script>
+    function toggleDarkMode() {
+      const body = document.body;
+      const icon = document.getElementById("darkModeIcon");
+      body.classList.toggle("dark-mode");
+      const isDark = body.classList.contains("dark-mode");
+      localStorage.setItem("darkMode", isDark);
+      icon.textContent = isDark ? "🌙" : "🌞";
+    }
+
+    window.onload = function () {
+      const isDark = localStorage.getItem("darkMode") === "true";
+      const icon = document.getElementById("darkModeIcon");
+      if (isDark) {
+        document.body.classList.add("dark-mode");
+        icon.textContent = "🌞";
+      }
+
+      const user = JSON.parse(localStorage.getItem("readscape_user"));
+      const navPic = document.getElementById("navProfilePic");
+      if (navPic && user?.profilePic) {
+        navPic.src = user.profilePic;
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

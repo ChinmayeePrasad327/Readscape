@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Author - READSCAPE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap & Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="books.css" />
+</head>
+<body>
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+    <a class="navbar-brand text-white fw-bold" href="#">ReadEscape</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Ebooks</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="AudioBook.htm">Audio Books</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="Text.htm">Text Books</a></li>
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+            Others
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+            <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      </ul>
+  
+      <form class="d-flex flex-grow-1 ms-3" role="search">
+        <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+        <!-- Wishlist Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      
+        <!-- Profile Icon -->
+        <li class="nav-item">
+          <a href="profile.htm" title="Profile">
+            <img
+  id="navProfilePic"
+  src="https://via.placeholder.com/40"
+  alt="Profile"
+  class="nav-profile-img"
+  onerror="this.src='profile-image.webp';"
+  />
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </nav>
+
+<!-- Author - Paulo Coelho -->
+<div class="container py-5 mt-5">
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center mb-4">
+        <img src="paulo coehlo.jpeg" alt="Paulo Coelho" class="img-fluid shadow rounded" width="250" />
+        <h2 class="mt-3">Paulo Coelho</h2>
+        <p class="text-muted">🇧🇷 Brazilian · 🌌 Philosophical Fiction · ✨ Magical Realism</p>
+      </div>
+      <div class="col-md-8">
+        <h4 class="text-brown">About the Author</h4>
+        <p>
+          Paulo Coelho is a Brazilian author known for inspiring millions through his spiritual and philosophical storytelling. His global bestseller "The Alchemist" is a tale of destiny, dreams, and personal legend that continues to move hearts across generations.
+        </p>
+        <blockquote class="blockquote mt-4 border-start ps-3 text-brown">
+          "And, when you want something, all the universe conspires in helping you to achieve it."
+        </blockquote>
+      </div>
+    </div>
+    <hr class="my-5" />
+  </div>
+  
+  <h4 class="text-center mb-4">📚 Books by Paulo Coelho</h4>
+  
+  <div id="pauloCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center gap-4">
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="alchemist.jpeg" alt="The Alchemist" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">The Alchemist</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="brida.jpeg" alt="Brida" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Brida</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="veronika.jpeg" alt="Veronika Decides to Die" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Veronika Decides to Die</p>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex justify-content-center gap-4">
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="devil.png" alt="The Devil and Miss Prym" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">The Devil and Miss Prym</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="eleven minutes.jpeg" alt="Eleven Minutes" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Eleven Minutes</p>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="book-detail.htm">
+              <img src="aleph.jpeg" alt="Aleph" class="book-cover" style="height: 140px; width: auto;" />
+              <p class="mt-2 mb-0">Aleph</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#pauloCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#pauloCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Back to Home -->
+  <div class="text-center mt-5">
+    <a href="Booknew.htm" class="btn btn-warning">← Back to Home</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center bg-brown text-white py-3 mt-5">
+  <p class="mb-0">All rights reserved by READSCAPE © 2025</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
