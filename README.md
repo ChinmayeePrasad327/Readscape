@@ -34,6 +34,6 @@ Welcome to **READSCAPE**, a sleek, aesthetic book discovery platform made for fi
 ## 🚀 How to Run Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/readscape-website.git
+git clone https://github.com/ChinmayeePrasad327/Readscape.git
 cd readscape-website
 open index.html
