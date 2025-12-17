@@ -26,9 +26,7 @@ Welcome to **READSCAPE**, a sleek, aesthetic book discovery platform made for fi
 
 ## 🔮 Sneak Peek
 
-![Screenshot of Readscape Homepage](https://your-screenshot-link.com)  
-*(Add a screenshot or a preview GIF here if you want 🔥)*
-
+![Screenshot of Readscape Homepage](https://your-screenshot-link.com)
 ---
 
 ## 🚀 How to Run Locally
