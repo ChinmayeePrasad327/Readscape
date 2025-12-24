@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>READSCAPE - Escape Into Books</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="books.css">
+
+</head>
+<style>
+    .carousel-item img.rounded-circle {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 2px solid #fff;
+    }
+    .carousel-item img.book-cover {
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .carousel-inner .d-flex {
+      justify-content: center;
+      gap: 40px;
+    }
+    .author-slide {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: nowrap;
+    }
+    .author-slide a {
+      text-align: center;
+      color: inherit;
+      text-decoration: none;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+    }
+  </style>
+<body>
+  <!-- Header -->
+  <header class="d-flex flex-wrap justify-content-between align-items-center p-3 bg-brown text-white">
+    <div class="d-flex align-items-center">
+      <img src="Logo.jpg" alt="Logo" width="80" class="me-3">
+      <div>
+        <h1 class="main-title">READSCAPE</h1>
+        <p class="caption">Escape Into Books</p>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn btn-outline-warning me-2" onclick="showForm('login')">Sign In</button>
+      <button class="btn btn-warning" onclick="showForm('register')">Register</button>
+    </div>
+  </header>
+
+  <!-- Dark mode toggle icon -->
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode" onclick="toggleDarkMode()">
+    <span id="darkModeIcon">🌞</span>
+  </button>
+  
+  <!-- Login/Register Overlay -->
+  <div id="overlay" style="display: none;"></div>
+  <div id="loginForm" class="form-container">
+    <button type="button" class="btn-close float-end" onclick="closeForm()"></button>
+    <h4 class="mb-3">Sign In</h4>
+    <form onsubmit="saveUserInfo(event)">
+
+      <div class="mb-3">
+        <label for="loginUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="loginUsername" required>
+      </div>
+      <div class="mb-3">
+        <label for="loginPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="loginPassword" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+
+  <div id="registerForm" class="form-container">
+    <button type="button" class="btn-close float-end" onclick="closeForm()"></button>
+    <h4 class="mb-3">Register</h4>
+    <form id="registerFormElement"  onsubmit="saveUserInfo(event)">
+      <div class="mb-3">
+        <label for="registerUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="registerUsername" required>
+      </div>
+      <div class="mb-3">
+        <label for="registerEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="registerEmail" required>
+      </div>
+      <div class="mb-3">
+        <label for="registerPassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="registerPassword" required>
+      </div>
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+ </div>
+ 
+
+   <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-brown px-3" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999;">
+  <a class="navbar-brand text-white fw-bold" href="#">ReadEscape</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link text-white" href="Booknew.htm">Home</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="about us.htm">About Us</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="ebooks.htm">Books</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="Audio.htm">Audio Books</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="Textbooks.htm">Text Books</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+          Others
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">💬Reviews</a></li>
+          <li><a class="dropdown-item" href="#">🎁Offers</a></li>
+        </ul>
+      </li>
+      
+    </ul>
+    </ul>
+
+    <form class="d-flex flex-grow-1 ms-3" role="search">
+      <input class="form-control me-2 w-100" type="search" placeholder="Search books" aria-label="Search">
+      <button class="btn btn-outline-warning" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav ms-3 d-flex align-items-center gap-3">
+        <!-- Wishlist Icon -->
+       <!-- <li class="nav-item">
+          <a class="nav-link icon-brown" href="#" title="Wishlist"><i class="fas fa-heart"></i></a>
+        </li>-->
+      
+        <!-- Cart Icon -->
+        <li class="nav-item">
+          <a class="nav-link icon-brown" href="cart.htm" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+    
+      <!-- Profile Icon -->
+      <li class="nav-item">
+        <a href="profile.htm" title="Profile">
+          <img
+id="navProfilePic"
+src="https://via.placeholder.com/40"
+alt="Profile"
+class="nav-profile-img"
+onerror="this.src='profile-image.webp';"
+/>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+</nav>
+<!-- 🌠 HERO SECTION with Carousel + Reading Challenge slides -->
+<section id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <!-- Carousel Indicators -->
+<div class="carousel-indicators">
+  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  
+</div>
+  <div class="carousel-inner">
+
+    <!-- ✨ Slide 1: Welcome to Readscape -->
+    <div class="carousel-item active">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center">
+            <img src="reading pic1.jpg" alt="Reading Escape" class="img-fluid rounded shadow" >
+          </div>
+          <div class="col-lg-6 text-white text-center text-lg-start">
+            <h2 class="display-4 fw-bold">📖 Welcome to READSCAPE</h2>
+            <p class="lead">Escape into stories, one page at a time.</p>
+            <a href="#" class="btn btn-warning btn-lg mt-3">Explore Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📚 Slide 2: New Arrivals -->
+    <div class="carousel-item">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center">
+            <img src="NewReleases.jpeg"  alt="New Arrivals" class="img-fluid rounded shadow" >
+          </div>
+          <div class="col-lg-6 text-white text-center text-lg-start">
+            <h2 class="display-4 fw-bold">🆕 New Arrivals</h2>
+            <p class="lead">Discover the latest page-turners hitting our shelves!</p>
+            <a href="NewArrival.htm" class="btn btn-warning btn-lg mt-3">Browse Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔥 Slide 3: Hot Offers -->
+    <div class="carousel-item">
+      <div class="container py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center">
+            <img src="hot deals.jpg" alt="Hot Offers" class="img-fluid rounded shadow">
+          </div>
+          <div class="col-lg-6 text-white text-center text-lg-start">
+            <h2 class="display-4 fw-bold">🔥 Hot Offers</h2>
+            <p class="lead">Limited-time discounts on bestselling books!</p>
+            <a href="#" class="btn btn-warning btn-lg mt-3">Check Deals</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+  </div>
+
+  <!-- NEW  and functioning Carousel Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+  
+
+</section>
+
+
+  <!-- 📚 Bestseller Carousel -->
+  <section class="py-5" style="background: linear-gradient(to right, #fef0dc, #f8cfa0);">
+    <div class="container">
+      <h3 class="text-center mb-4">🔥 Bestsellers</h3>
+      <div id="bestsellerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex">
+              <a href="book-detail.htm"><img src="alchemist.jpeg" class="book-cover" alt="The Alchemist"></a>
+              <a href="book-detail let them.htm"><img src="Let them theory.jpg" class="book-cover" alt="Let Them Theory"></a>
+              <a href="book-detail if cat.htm"><img src="if the cat disappeared.jpeg" class="book-cover" alt="If Cats Disappeared"></a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex">
+              <a href="book-detail.htm"><img src="reaper.jpeg" class="book-cover" alt="The Reaper"></a>
+              <a href="book-detail.htm"><img src="predator.jpeg" class="book-cover" alt="The Predator"></a>
+              <a href="book-detail.htm"><img src="emperor.jpeg" class="book-cover" alt="The Emperor"></a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#bestsellerCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bestsellerCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🆕 New Releases Carousel -->
+  <section class="py-5" style="background: linear-gradient(to right, #f9e8dc, #f5d0a0);">
+    <div class="container">
+      <h3 class="text-center mb-4">🆕 New Releases</h3>
+      <div id="newReleaseCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex">
+              <a href="book-detail fine print.htm"><img src="fine print.jpeg" class="book-cover" alt="The Fine Print"></a>
+              <a href="book-detail terms and conditions.htm"><img src="Terms and Conditions.jpeg" class="book-cover" alt="Terms and Conditions"></a>
+              <a href="book detail-final offer.htm"><img src="final offer.jpeg" class="book-cover" alt="The Final Offer"></a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex">
+              <a href="book-detail fourth wing.htm"><img src="fourth wing.jpeg" class="book-cover" alt="The Fourth Wing"></a>
+              <a href="book detail-iron flames.htm"><img src="iron flame.jpeg" class="book-cover" alt="Iron Flames"></a>
+              <a href="book-detail.htm"><img src="onyx.jpeg" class="book-cover" alt="Onyx Storm"></a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#newReleaseCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#newReleaseCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 👩‍💼 Author Carousel -->
+  <section class="py-5" style="background: linear-gradient(to right, #fdf4e3, #f1dbb2);">
+    <div class="container">
+      <h3 class="text-center mb-4">👩‍💼 Featured Authors</h3>
+      <div id="authorCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="author-slide">
+              <a href="author-paulo.htm"><img src="paulo coehlo.jpeg" class="rounded-circle" alt="Paulo Coelho"><p class="mt-2">Paulo Coelho</p></a>
+              <a href="author-john-green.htm"><img src="john green.jpeg" class="rounded-circle" alt="John Green"><p class="mt-2">John Green</p></a>
+              <a href="author-rebecca.htm"><img src="rebacca.jpeg" class="rounded-circle" alt="Rebecca Yarros"><p class="mt-2">Rebecca Yarros</p></a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="author-slide">
+              <a href="authour-ana-huang.htm"><img src="ana huang.jpeg" class="rounded-circle" alt="Ana Huang"><p class="mt-2">Ana Huang</p></a>
+              <a href="author-lauren-roberts.htm"><img src="Lauren.jpeg" class="rounded-circle" alt="Lauren Roberts"><p class="mt-2">Lauren Roberts</p></a>
+              <a href="authour-holly-black.htm"><img src="holly.jpeg" class="rounded-circle" alt="Holly Black"><p class="mt-2">Holly Black</p></a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#authorCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#authorCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔻 Footer -->
+  <footer class="text-center bg-brown text-white py-3 mt-5">
+    <p class="mb-0">All rights reserved by READSCAPE © 2025</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function saveUserInfo(e) {
+  e.preventDefault(); 
+
+  const username = document.getElementById('registerUsername').value;
+  const email = document.getElementById('registerEmail').value;
+
+  // Save to localStorage
+  localStorage.setItem("readscape_user", JSON.stringify({
+    name: username,
+    email: email,
+    profilePic: "https://via.placeholder.com/40"
+  }));
+
+  alert("Registration successful! 🎉");
+
+  // Redirect to profile page
+  window.location.href = "profile.htm";
+}
+
+    function showForm(type) {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+
+      if (type === 'login') {
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+      } else if (type === 'register') {
+        document.getElementById('registerForm').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+      }
+    }
+
+    function closeForm() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function scrollBooks(sectionId, amount) {
+      const container = document.getElementById(sectionId);
+      container.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  function toggleDarkMode() {
+  const body = document.body;
+  const icon = document.getElementById("darkModeIcon");
+  body.classList.toggle("dark-mode");
+  const isDark = body.classList.contains("dark-mode");
+  localStorage.setItem("darkMode", isDark);
+  icon.textContent = isDark ? "🌙" : "🌞";
+}
+
+window.onload = () => {
+  // Dark mode toggle restore
+  const isDark = localStorage.getItem("darkMode") === "true";
+  const icon = document.getElementById("darkModeIcon");
+  if (isDark) {
+    document.body.classList.add("dark-mode");
+    icon.textContent = "🌞";
+  }
+
+  // Profile pic update (with fallback if needed)
+  const user = JSON.parse(localStorage.getItem("readscape_user"));
+const navPic = document.getElementById("navProfilePic");
+
+if (navPic) {
+  navPic.src = user?.profilePic || "default-avatar.png";
+}
+
+};
+
+
+  </script>
+
+</body>
+</html>
